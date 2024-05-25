@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2yyxu17f5a1s"]
+
+[ext_resource type="Script" path="res://scenes/scripts/draggable_item.gd" id="1_c4rgq"]
+
+[node name="Btn1" type="TextureRect"]
+custom_minimum_size = Vector2(40, 40)
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 61.0
+offset_bottom = 69.0
+expand_mode = 1
+script = ExtResource("1_c4rgq")
+metadata/_edit_use_anchors_ = true
