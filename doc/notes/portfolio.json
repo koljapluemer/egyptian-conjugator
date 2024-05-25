@@ -1,0 +1,15 @@
+{
+  "title": "Egyptian Conjugator",
+  "subtitle": "",
+  "status": "alpha",
+  "showOnPortfolio": false,
+  "showAboveFold": false,
+  "imageAltProperty": "Screenshot of Egyptian Conjugator",
+  "languages": [],
+  "links": [
+    {
+      "title": "See on GitHub",
+      "url": "https://github.com/koljapluemer/egyptian_conjugator"
+    }
+  ]
+}
