@@ -23,6 +23,14 @@ offset_right = 403.0
 offset_bottom = 399.0
 text = "Reset Level"
 
+[node name="Combined" type="Label" parent="."]
+offset_left = 622.0
+offset_top = 108.0
+offset_right = 728.0
+offset_bottom = 131.0
+text = "= lorem"
+horizontal_alignment = 2
+
 [node name="Particles" type="Node" parent="."]
 
 [node name="Confetti" type="Node" parent="Particles"]

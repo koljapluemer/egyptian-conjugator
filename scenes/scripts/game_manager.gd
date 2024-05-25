@@ -5,6 +5,7 @@ const DRAG_BUTTON = preload("res://scenes/dragButton.tscn")
 @onready var green_confetti: CPUParticles2D = $Particles/Confetti/green
 
 @onready var prompt: Label = $Prompt
+@onready var combined: Label = $Combined
 
 const EXERCISES = [
 	{
@@ -79,17 +80,25 @@ func set_new_exercise() -> void:
 	exercise = EXERCISES[current_exercise_index]
 	prompt.text = exercise.prompt
 
+func set_combined_label() -> void:
+	var combinedText = "= "
+	for i in range(slotObjects.size()):
+		combinedText += slotObjects[slotObjects.size()-i-1].btn_label.text
+	combined.text = combinedText
+
 func reset_buttons_and_slots() -> void:
 	for i in range(slotObjects.size()):
 		slotObjects[i].reset_text()
 	for i in range(buttonObjects.size()):
 		buttonObjects[i].reset_text()
+	set_combined_label()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func _on_drag_finished() -> void:
+	set_combined_label()
 	# check if exercise is solved
 	# by looping through slotObjects and checking against exercise.solution
 	var solved = true
