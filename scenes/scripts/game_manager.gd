@@ -2,6 +2,7 @@ extends Node2D
 
 const DRAG_SLOT = preload("res://scenes/dragSlot.tscn")
 const DRAG_BUTTON = preload("res://scenes/dragButton.tscn")
+@onready var green_confetti: CPUParticles2D = $Particles/Confetti/green
 
 @onready var prompt: Label = $Prompt
 
@@ -16,7 +17,7 @@ const EXERCISES = [
 	},
 	{
 		"prompt": "You work. (f)",
-		"solution": ["", "", "ي", "ل", "م", "ع", "ت"]
+		"solution": ["", "ي", "ل", "م", "ع", "ت"]
 	},
 	{
 		"prompt": "He works.",
@@ -95,13 +96,14 @@ func _on_drag_finished() -> void:
 	for i in range(slotObjects.size()):
 		var userSolution = slotObjects[i].btn_label.text
 		var correctSolution = exercise.solution[i]
-		print("comparing", userSolution, correctSolution)
+		print("comparing", userSolution, "with", correctSolution, "...")
 		if userSolution != correctSolution:
 			solved = false
 			break
 	print("drag finished, correct:", solved)
 	# start timer!!!!!!!!!!!!!!!!, after 1 second get new exercise
 	if solved:
+		green_confetti.emitting = true
 		var timer = Timer.new()
 		timer.wait_time = 1.0
 		timer.one_shot = true

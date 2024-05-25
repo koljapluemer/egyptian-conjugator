@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://s8cyaoge7ji5"]
+[gd_scene load_steps=3 format=3 uid="uid://s8cyaoge7ji5"]
 
 [ext_resource type="Script" path="res://scenes/scripts/game_manager.gd" id="1_xgyef"]
+
+[sub_resource type="Curve" id="Curve_6r14v"]
+_data = [Vector2(0.123596, 0.43956), 0.0, 0.0, 0, 0, Vector2(0.94382, 0.835165), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_xgyef")
@@ -18,5 +22,31 @@ offset_top = 368.0
 offset_right = 403.0
 offset_bottom = 399.0
 text = "Reset Level"
+
+[node name="Particles" type="Node" parent="."]
+
+[node name="Confetti" type="Node" parent="Particles"]
+
+[node name="green" type="CPUParticles2D" parent="Particles/Confetti"]
+position = Vector2(356, 196)
+emitting = false
+amount = 16
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.6
+randomness = 0.2
+local_coords = true
+direction = Vector2(0, -1)
+gravity = Vector2(0, 100)
+initial_velocity_min = 120.0
+initial_velocity_max = 170.0
+angular_velocity_min = 260.0
+angular_velocity_max = 260.0
+linear_accel_min = 10.0
+linear_accel_max = 10.0
+scale_amount_min = 4.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_6r14v")
+color = Color(0.427451, 0.807843, 0.698039, 1)
 
 [connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]

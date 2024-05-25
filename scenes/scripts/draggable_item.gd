@@ -28,5 +28,10 @@ func _get_drag_data(at_position):
 	
 	return preview_label.text
 	
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_DRAG_END and not get_viewport().gui_is_drag_successful():
+		# drag failed, show label again
+		reset_text()
+	
 func reset_text():
 	btn_label.text = original_value

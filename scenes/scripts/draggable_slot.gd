@@ -22,7 +22,8 @@ func reset_text():
 	btn_label.text = original_value
 
 func _can_drop_data(at_position, data):
-	return true
+	# check if data is string
+	return typeof(data) == TYPE_STRING
 	
 func _drop_data(at_position, data):
 	btn_label.text = data
