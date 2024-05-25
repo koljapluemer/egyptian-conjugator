@@ -6,8 +6,17 @@
 script = ExtResource("1_xgyef")
 
 [node name="Prompt" type="Label" parent="."]
-offset_left = 75.0
-offset_top = 32.0
-offset_right = 181.0
-offset_bottom = 55.0
+offset_left = 307.0
+offset_top = 30.0
+offset_right = 413.0
+offset_bottom = 53.0
 text = "do something"
+
+[node name="ResetButton" type="Button" parent="."]
+offset_left = 307.0
+offset_top = 368.0
+offset_right = 403.0
+offset_bottom = 399.0
+text = "Reset Level"
+
+[connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]

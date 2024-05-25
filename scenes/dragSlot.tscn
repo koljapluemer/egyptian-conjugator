@@ -11,3 +11,5 @@ offset_bottom = -110.0
 expand_mode = 1
 script = ExtResource("1_g4ny3")
 metadata/_edit_use_anchors_ = true
+
+[connection signal="drag_finished" from="." to="." method="_on_drag_finished"]

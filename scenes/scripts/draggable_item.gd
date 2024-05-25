@@ -4,6 +4,7 @@ var btn_label
 const BTN_LABEL = preload("res://scenes/btnLabel.tscn")
 const SLOT_PANEL = preload("res://scenes/slotPanel.tscn")
 
+var original_value
 
 func _init():
 	btn_label = BTN_LABEL.instantiate()
@@ -13,9 +14,9 @@ func _init():
 
 func set_values(text):
 	btn_label.text = text	
+	original_value = text
 
 func _get_drag_data(at_position):
-	print("dragging...")
 	var preview_label = Label.new()
 	preview_label.text = btn_label.text
 	
@@ -26,4 +27,6 @@ func _get_drag_data(at_position):
 	btn_label.text = ""
 	
 	return preview_label.text
-
+	
+func reset_text():
+	btn_label.text = original_value
