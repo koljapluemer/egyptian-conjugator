@@ -4,14 +4,14 @@
 [ext_resource type="Script" path="res://scenes/scripts/draggable_slot.gd" id="2_gebgp"]
 
 [node name="Game" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(617, 391)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Slot1" type="TextureRect" parent="Control"]
 custom_minimum_size = Vector2(40, 40)
@@ -22,6 +22,7 @@ offset_right = -110.0
 offset_bottom = -110.0
 expand_mode = 1
 script = ExtResource("2_gebgp")
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="Control/Slot1"]
 show_behind_parent = true
@@ -29,6 +30,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="BtnLabel" type="Label" parent="Control/Slot1"]
 layout_mode = 1
@@ -47,6 +49,7 @@ theme_override_font_sizes/font_size = 32
 text = "ب"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Slot2" type="TextureRect" parent="Control"]
 custom_minimum_size = Vector2(40, 40)
@@ -57,6 +60,7 @@ offset_right = -41.0
 offset_bottom = -110.0
 expand_mode = 1
 script = ExtResource("2_gebgp")
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="Control/Slot2"]
 show_behind_parent = true
@@ -64,6 +68,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="BtnLabel" type="Label" parent="Control/Slot2"]
 layout_mode = 1
@@ -82,6 +87,7 @@ theme_override_font_sizes/font_size = 32
 text = "ح"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Slot3" type="TextureRect" parent="Control"]
 custom_minimum_size = Vector2(40, 40)
@@ -92,6 +98,7 @@ offset_right = 36.0
 offset_bottom = -110.0
 expand_mode = 1
 script = ExtResource("2_gebgp")
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="Control/Slot3"]
 show_behind_parent = true
@@ -99,6 +106,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="BtnLabel" type="Label" parent="Control/Slot3"]
 layout_mode = 1
@@ -116,6 +124,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Btn1" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(40, 40)
@@ -125,6 +134,7 @@ offset_right = 61.0
 offset_bottom = 69.0
 expand_mode = 1
 script = ExtResource("2_ebh4t")
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="Btn1"]
 show_behind_parent = true
@@ -132,6 +142,7 @@ layout_mode = 0
 offset_right = 45.0
 offset_bottom = 45.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="BtnLabel" type="Label" parent="Btn1"]
 layout_mode = 1
@@ -150,3 +161,4 @@ theme_override_font_sizes/font_size = 32
 text = "أ"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
