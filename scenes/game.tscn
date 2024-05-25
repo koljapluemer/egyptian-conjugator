@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://s8cyaoge7ji5"]
+
+[ext_resource type="Texture2D" uid="uid://dpe05t38uqtnf" path="res://icon.svg" id="1_uyakh"]
+[ext_resource type="Script" path="res://scenes/scripts/draggable_rect.gd" id="2_gebgp"]
+
+[node name="Game" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 64.0
+texture = ExtResource("1_uyakh")
+expand_mode = 1
+script = ExtResource("2_gebgp")
+
+[node name="Panel" type="Panel" parent="TextureRect"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+offset_left = 105.0
+offset_top = 90.0
+offset_right = 145.0
+offset_bottom = 130.0
+expand_mode = 1
+script = ExtResource("2_gebgp")
+
+[node name="Panel" type="Panel" parent="TextureRect2"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
