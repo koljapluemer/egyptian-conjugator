@@ -31,6 +31,16 @@ offset_bottom = 53.0
 text = "= lorem"
 horizontal_alignment = 2
 
+[node name="Debug" type="Label" parent="."]
+visible = false
+offset_left = 78.0
+offset_top = 462.0
+offset_right = 1048.0
+offset_bottom = 602.0
+text = "= lorem"
+horizontal_alignment = 2
+autowrap_mode = 2
+
 [node name="Particles" type="Node" parent="."]
 
 [node name="Confetti" type="Node" parent="Particles"]

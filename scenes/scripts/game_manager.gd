@@ -11,6 +11,8 @@ const EXERCISES_PATH = "res://data/execises.json"
 var exercises = []
 
 
+@onready var debug: Label = $Debug
+
 
 var current_exercise_index: int
 
@@ -33,7 +35,7 @@ func load_json_file(file_path:String):
 
 
 func set_new_exercise() -> void:
-	reset_buttons_and_slots()
+	reset_ui()
 	# pick a random exercise
 	current_exercise_index = randi() % exercises.size()
 	exercise = exercises[current_exercise_index]
@@ -64,6 +66,7 @@ func set_new_exercise() -> void:
 		add_child(dragButton)
 		buttonObjects.append(dragButton)
 	set_combined_label()
+	debug.text = JSON.stringify(exercise)
 		
 
 func set_combined_label() -> void:
@@ -79,6 +82,15 @@ func reset_buttons_and_slots() -> void:
 		buttonObjects[i].reset_text()
 	set_combined_label()
 
+func reset_ui() -> void:
+	# delete all slotObjects and buttonObjects:
+	for i in range(slotObjects.size()):
+		slotObjects[i].queue_free()
+	for i in range(buttonObjects.size()):
+		buttonObjects[i].queue_free()
+	slotObjects = []
+	buttonObjects = []
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -88,9 +100,11 @@ func _on_drag_finished() -> void:
 	# check if exercise is solved
 	# by looping through slotObjects and checking against exercise.solution
 	var solved = true
+	var clonedSolution = exercise["EG_chars"].duplicate()
+	clonedSolution.reverse()
 	for i in range(slotObjects.size()):
 		var userSolution = slotObjects[i].btn_label.text
-		var correctSolution = exercise["EG_script"][i]
+		var correctSolution = clonedSolution[i]
 		print("comparing", userSolution, "with", correctSolution, "...")
 		if userSolution != correctSolution:
 			solved = false
