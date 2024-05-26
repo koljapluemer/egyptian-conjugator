@@ -7,7 +7,7 @@ const DRAG_BUTTON = preload("res://scenes/dragButton.tscn")
 @onready var prompt: Label = $Prompt
 @onready var combined: Label = $Combined
 
-const EXERCISES_PATH = "res://data/execises.json"
+const EXERCISES_PATH = "res://data/exercises.json"
 var exercises = []
 
 

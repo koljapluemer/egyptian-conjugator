@@ -18,3 +18,7 @@
 - tutorials:
 	- [confetti effect](https://www.youtube.com/watch?v=LPhp90cZf6Q)
 	- *Various Drag & Drop Tutorials*: [1](https://www.youtube.com/watch?v=KA_SomgewJA), [2](https://www.youtube.com/watch?v=uhgswVkYp0o), [3](https://www.youtube.com/watch?v=8cV-5ByZLOE)
+
+- bugs in data:
+	- "We are wanting"
+	- "We are loving"
