@@ -5,16 +5,23 @@ const SLOT_PANEL = preload("res://scenes/slotPanel.tscn")
 
 var original_value = "X"
 var btn_label
+var btn_panel
 
 signal drag_finished
 
 func _init() -> void:
 	btn_label = BTN_LABEL.instantiate()
 	add_child(btn_label)
-	var panel = SLOT_PANEL.instantiate()
-	add_child(panel)
+	btn_panel = SLOT_PANEL.instantiate()
+	add_child(btn_panel)
 
-func set_values(text, parent):
+func set_values(text, parent, slot_type):
+	if slot_type == SLOT_TYPE.FILL:
+		btn_panel.color = Color.CADET_BLUE
+	if slot_type == SLOT_TYPE.REPLACE:
+		btn_panel.color = Color.DARK_SLATE_GRAY
+	else:
+		btn_panel.color = Color.DARK_SLATE_BLUE		
 	original_value = text	
 	btn_label.text = text		
 

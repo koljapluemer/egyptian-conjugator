@@ -10,8 +10,7 @@ const DRAG_BUTTON = preload("res://scenes/dragButton.tscn")
 const EXERCISES_PATH = "res://data/execises.json"
 var exercises = []
 
-const BUTTONS = ["ا", "أ", "ت", "ي", "و", "ن"]
-const SLOTS = ["", "", "ل", "م", "ع", ""]
+
 
 var current_exercise_index: int
 
@@ -21,22 +20,6 @@ var exercise = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# make drag slots
-	for i in range(SLOTS.size()):
-		var dragSlot = DRAG_SLOT.instantiate()
-		var textVal = SLOTS[i]
-		dragSlot.set_values(textVal, self)
-		dragSlot.position = Vector2(300 + i * 50, 100)
-		dragSlot.connect("drag_finished", _on_drag_finished)
-		add_child(dragSlot)
-		slotObjects.append(dragSlot)
-	# make drag buttons
-	for i in range(BUTTONS.size()):
-		var dragButton = DRAG_BUTTON.instantiate()
-		dragButton.set_values(BUTTONS[i])
-		dragButton.position = Vector2(300 + i * 50, 200)
-		add_child(dragButton)
-		buttonObjects.append(dragButton)
 	exercises = load_json_file(EXERCISES_PATH)
 	set_new_exercise()
 
@@ -55,6 +38,33 @@ func set_new_exercise() -> void:
 	current_exercise_index = randi() % exercises.size()
 	exercise = exercises[current_exercise_index]
 	prompt.text = exercise["EN"]
+	
+		# make drag slots
+	for i in range(exercise["exercise_template"].size()):
+		var dragSlot = DRAG_SLOT.instantiate()
+		var textVal = exercise["exercise_template"][i][0]
+		if textVal == "_":
+			dragSlot.set_values('', self, SLOT_TYPE.FILL)
+		elif textVal == "X":
+			# in this case we want to communicate that we need to replace this letter, yes
+			# but also, we need to reverse engineer what the letter was at this point
+			textVal = exercise["EG_chars"][i]
+			dragSlot.set_values(textVal, self, SLOT_TYPE.REPLACE)
+		else:			
+			dragSlot.set_values(textVal, self, SLOT_TYPE.IMMUTABLE)
+		dragSlot.position = Vector2(300 + i * 50, 100)
+		dragSlot.connect("drag_finished", _on_drag_finished)
+		add_child(dragSlot)
+		slotObjects.append(dragSlot)
+	# make drag buttons
+	for i in range(exercise["removed_letters"].size()):
+		var dragButton = DRAG_BUTTON.instantiate()
+		dragButton.set_values(exercise["removed_letters"][i])
+		dragButton.position = Vector2(300 + i * 50, 200)
+		add_child(dragButton)
+		buttonObjects.append(dragButton)
+	set_combined_label()
+		
 
 func set_combined_label() -> void:
 	var combinedText = "= "
@@ -80,7 +90,7 @@ func _on_drag_finished() -> void:
 	var solved = true
 	for i in range(slotObjects.size()):
 		var userSolution = slotObjects[i].btn_label.text
-		var correctSolution = exercise.solution[i]
+		var correctSolution = exercise["EG_script"][i]
 		print("comparing", userSolution, "with", correctSolution, "...")
 		if userSolution != correctSolution:
 			solved = false

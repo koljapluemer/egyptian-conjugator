@@ -1,0 +1,2 @@
+class_name SLOT_TYPE
+enum {REPLACE, FILL, IMMUTABLE}

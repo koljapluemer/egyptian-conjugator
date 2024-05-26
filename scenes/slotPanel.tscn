@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b6g8fwexpcrp7"]
 
-[node name="Panel" type="Panel"]
+[node name="Panel" type="ColorRect"]
 show_behind_parent = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -16,3 +16,4 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
+color = Color(0.12549, 0.12549, 0.172549, 1)

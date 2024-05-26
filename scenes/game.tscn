@@ -10,9 +10,9 @@ point_count = 2
 script = ExtResource("1_xgyef")
 
 [node name="Prompt" type="Label" parent="."]
-offset_left = 307.0
+offset_left = 635.0
 offset_top = 30.0
-offset_right = 413.0
+offset_right = 741.0
 offset_bottom = 53.0
 text = "do something"
 
@@ -24,10 +24,10 @@ offset_bottom = 399.0
 text = "Reset Level"
 
 [node name="Combined" type="Label" parent="."]
-offset_left = 622.0
-offset_top = 108.0
-offset_right = 728.0
-offset_bottom = 131.0
+offset_left = 478.0
+offset_top = 30.0
+offset_right = 584.0
+offset_bottom = 53.0
 text = "= lorem"
 horizontal_alignment = 2
 
