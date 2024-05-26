@@ -7,41 +7,8 @@ const DRAG_BUTTON = preload("res://scenes/dragButton.tscn")
 @onready var prompt: Label = $Prompt
 @onready var combined: Label = $Combined
 
-const EXERCISES = [
-	{
-		"prompt": "I work.",
-		"solution": ["", "", "ل", "م", "ع", "أ"]
-	},
-	{
-		"prompt": "You work. (m)",
-		"solution": ["", "", "ل", "م", "ع", "ت"]
-	},
-	{
-		"prompt": "You work. (f)",
-		"solution": ["", "ي", "ل", "م", "ع", "ت"]
-	},
-	{
-		"prompt": "He works.",
-		"solution": ["", "", "ل", "م", "ع", "ي"]
-	},
-	{
-		"prompt": "She works.",
-		"solution": ["", "", "ل", "م", "ع", "ت"]
-	},
-	{
-		"prompt": "We work.",
-		"solution": ["", "", "ل", "م", "ع", "ن"]
-	},
-	{
-		"prompt": "You work. (pl)",
-		"solution": ["ا", "و", "ل", "م", "ع", "ت"]
-	},
-	{
-		"prompt": "They work.",
-		"solution": ["ا", "و", "ل", "م", "ع", "ي"]
-
-	}
-]
+const EXERCISES_PATH = "res://data/execises.json"
+var exercises = []
 
 const BUTTONS = ["ا", "أ", "ت", "ي", "و", "ن"]
 const SLOTS = ["", "", "ل", "م", "ع", ""]
@@ -70,15 +37,24 @@ func _ready() -> void:
 		dragButton.position = Vector2(300 + i * 50, 200)
 		add_child(dragButton)
 		buttonObjects.append(dragButton)
-
+	exercises = load_json_file(EXERCISES_PATH)
 	set_new_exercise()
+
+func load_json_file(file_path:String):
+	if FileAccess.file_exists(file_path):
+		var dataFile = FileAccess.open(file_path, FileAccess.READ)
+		var parsedResult = JSON.parse_string(dataFile.get_as_text())
+		return parsedResult
+	else:
+		print("File does not exist")
+
 
 func set_new_exercise() -> void:
 	reset_buttons_and_slots()
 	# pick a random exercise
-	current_exercise_index = randi() % EXERCISES.size()
-	exercise = EXERCISES[current_exercise_index]
-	prompt.text = exercise.prompt
+	current_exercise_index = randi() % exercises.size()
+	exercise = exercises[current_exercise_index]
+	prompt.text = exercise["EN"]
 
 func set_combined_label() -> void:
 	var combinedText = "= "
@@ -119,6 +95,9 @@ func _on_drag_finished() -> void:
 		timer.timeout.connect(_on_timer_timeout)
 		add_child(timer)
 		timer.start()
+
+
+
 
 func _on_timer_timeout() -> void:
 	set_new_exercise()
