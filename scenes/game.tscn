@@ -32,7 +32,6 @@ text = "= lorem"
 horizontal_alignment = 2
 
 [node name="Debug" type="Label" parent="."]
-visible = false
 offset_left = 78.0
 offset_top = 462.0
 offset_right = 1048.0
